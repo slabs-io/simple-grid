@@ -11,7 +11,8 @@
       "title": {
         "type": "string",
         "default": "My Grid",
-        "title": "Grid Title"
+        "title": "Grid Title",
+        "brief": "Title"
       }
     }
   },
