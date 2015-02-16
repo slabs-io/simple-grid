@@ -4,6 +4,7 @@
   "type" : "output",
   "connectionsIn" : 1,
   "connectionsOut" : 0,
+  "customIcon" : "fa-table",
   "schema" : {
     "type": "object",
     "properties" : {
