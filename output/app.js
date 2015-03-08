@@ -7,16 +7,21 @@ var testData = {
         'mentions_17283728':'"hate" on the dailymail.co.uk',
         'mentions_17283729':'"terror" on the dailymail.co.uk'
     },
-    schema:{
-       "value":"number",
-       "url":"url"
+    schemas:{
+        "mentions_17283728":{
+           "value":"number"
+        },
+        "mentions_17283729":{
+           "value":"number",
+           "url":"url"
+        }
     },
     data: [
         {
             'mentions_17283729' : {value: 131, url:"http://www.google.com"}
         },
         {
-            'mentions_17283728' : {value:130} ,
+            'mentions_17283728' : {value:130},
             'mentions_17283729' : {value:35}
         },
         {
@@ -34,11 +39,11 @@ angular.module('app').controller('TableController', ['$scope', '$sce', function(
     vm.headers = [];
     vm.categories = [];
     vm.values = [];
-    vm.schema = {};
+    vm.schemas = {};
     
-    vm.output = function(obj){
-        return _.keys(obj).map(function(key){
-            return display(obj[key], vm.schema[key]);
+    vm.output = function(obj, key){
+        return _.keys(obj).map(function(k){
+            return display(obj[k], vm.schemas[key][k]);
         }).filter(function(val){ return val !== '' });
     };
 
@@ -53,7 +58,7 @@ angular.module('app').controller('TableController', ['$scope', '$sce', function(
         console.log(vm.data);
         vm.categories = data.categories;
         vm.values     = data.values;
-        vm.schema     = data.schema;
+        vm.schemas     = data.schemas;
 
         _.forEach(data.values, function(val){
             if(data.labels[val]){

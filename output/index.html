@@ -32,7 +32,7 @@
         <tr ng-repeat="data in tableController.data">
             <th>{{tableController.categories[$index]  | date:'medium'}}</th>
             <td ng-repeat="value in tableController.values">
-                <div ng-repeat="displayVal in tableController.output(data[value] || {})" ng-bind-html="displayVal">
+                <div ng-repeat="displayVal in tableController.output(data[value] || {}, value)" ng-bind-html="displayVal">
                     {{displayVal}}
                 </div>
             </td>
