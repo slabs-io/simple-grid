@@ -13,7 +13,7 @@
     <link href="../lib/bootstrap/dist/css/bootstrap.css" type="text/css" rel="stylesheet">
     <script src="../lib/underscore/underscore-min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.9/angular.min.js"></script>
-    <script src="/dist/slabs.io.js"></script>
+    <script src="../lib/slabs.io.js/dist/slabs.io.js"></script>
     <script src="app.js"></script>
 
 </head>
@@ -32,7 +32,9 @@
         <tr ng-repeat="data in tableController.data">
             <th>{{tableController.categories[$index]  | date:'medium'}}</th>
             <td ng-repeat="value in tableController.values">
-                {{data[value]}}
+                <div ng-repeat="displayVal in tableController.output(data[value] || {})" ng-bind-html="displayVal">
+                    {{displayVal}}
+                </div>
             </td>
         </tr>
         </tbody>
